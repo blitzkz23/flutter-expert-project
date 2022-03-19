@@ -56,11 +56,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: kRichBlack,
           textTheme: kTextTheme,
         ),
-        home: Material(
-          child: CustomDrawer(
-            content: HomeMoviePage(),
-          ),
-        ),
+        home: HomeMoviePage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {

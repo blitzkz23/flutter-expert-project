@@ -1,4 +1,5 @@
 import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +41,13 @@ class _CustomDrawerState extends State<CustomDrawer>
           ListTile(
             leading: Icon(Icons.movie),
             title: Text('Movies'),
+            onTap: () {
+              Navigator.pushNamed(context, '/home');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.tv),
+            title: Text('TV Shows'),
           ),
           ListTile(
             leading: Icon(Icons.save_alt),
