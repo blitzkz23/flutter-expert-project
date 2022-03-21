@@ -6,7 +6,7 @@ import 'package:ditonton/domain/repositories/tv_show_repository.dart';
 
 class TvShowRepositoryImpl implements TvShowRepository {
   @override
-  Future<Either<Failure, List<TvShow>>> getOnTheAirTvShows() {
+  Future<Either<Failure, List<TvShow>>> getNowAiringTvShows() {
     // TODO: implement getOnTheAirTvShows
     throw UnimplementedError();
   }
