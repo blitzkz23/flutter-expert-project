@@ -23,10 +23,10 @@ class TvShowDetail extends Equatable {
 
   final bool adult;
   final String backdropPath;
-  final DateTime firstAirDate;
+  final String firstAirDate;
   final List<Genre> genres;
   final int id;
-  final DateTime lastAirDate;
+  final String lastAirDate;
   final String name;
   final int numberOfEpisodes;
   final int numberOfSeasons;

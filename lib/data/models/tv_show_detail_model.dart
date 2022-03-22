@@ -1,3 +1,4 @@
+import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
 import 'package:equatable/equatable.dart';
@@ -37,13 +38,13 @@ class TvShowDetailResponse extends Equatable {
   final String backdropPath;
   final List<dynamic> createdBy;
   final List<int> episodeRunTime;
-  final DateTime firstAirDate;
-  final List<Genre> genres;
+  final String firstAirDate;
+  final List<GenreModel> genres;
   final String homepage;
   final int id;
   final bool inProduction;
   final List<String> languages;
-  final DateTime lastAirDate;
+  final String lastAirDate;
   final String name;
   final dynamic nextEpisodeToAir;
   final int numberOfEpisodes;
@@ -61,6 +62,70 @@ class TvShowDetailResponse extends Equatable {
   final double voteAverage;
   final int voteCount;
 
+  factory TvShowDetailResponse.fromJson(Map<String, dynamic> json) =>
+      TvShowDetailResponse(
+        adult: json["adult"],
+        backdropPath: json["backdrop_path"],
+        createdBy: List<dynamic>.from(json["created_by"].map((x) => x)),
+        episodeRunTime: List<int>.from(json["episode_run_time"].map((x) => x)),
+        firstAirDate: json["first_air_date"],
+        genres: List<GenreModel>.from(
+            json["genres"].map((x) => GenreModel.fromJson(x))),
+        homepage: json["homepage"],
+        id: json["id"],
+        inProduction: json["in_production"],
+        languages: List<String>.from(json["languages"].map((x) => x)),
+        lastAirDate: json['last_air_date'],
+        name: json["name"],
+        nextEpisodeToAir: json["next_episode_to_air"],
+        numberOfEpisodes: json["number_of_episodes"],
+        numberOfSeasons: json["number_of_seasons"],
+        originCountry: List<String>.from(json["origin_country"].map((x) => x)),
+        originalLanguage: json["original_language"],
+        originalName: json["original_name"],
+        overview: json["overview"],
+        popularity: json["popularity"].toDouble(),
+        posterPath: json["poster_path"],
+        productionCompanies:
+            List<dynamic>.from(json["production_companies"].map((x) => x)),
+        status: json["status"],
+        tagline: json["tagline"],
+        type: json["type"],
+        voteAverage: json["vote_average"].toDouble(),
+        voteCount: json["vote_count"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "adult": adult,
+        "backdrop_path": backdropPath,
+        "created_by": List<dynamic>.from(createdBy.map((x) => x)),
+        "episode_run_time": List<dynamic>.from(episodeRunTime.map((x) => x)),
+        "first_air_date": firstAirDate,
+        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+        "homepage": homepage,
+        "id": id,
+        "in_production": inProduction,
+        "languages": List<dynamic>.from(languages.map((x) => x)),
+        "last_air_date": lastAirDate,
+        "name": name,
+        "next_episode_to_air": nextEpisodeToAir,
+        "number_of_episodes": numberOfEpisodes,
+        "number_of_seasons": numberOfSeasons,
+        "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
+        "original_language": originalLanguage,
+        "original_name": originalName,
+        "overview": overview,
+        "popularity": popularity,
+        "poster_path": posterPath,
+        "production_companies":
+            List<dynamic>.from(productionCompanies.map((x) => x)),
+        "status": status,
+        "tagline": tagline,
+        "type": type,
+        "vote_average": voteAverage,
+        "vote_count": voteCount,
+      };
+
   TvShowDetail toEntity() {
     return TvShowDetail(
       posterPath: this.posterPath,
@@ -76,7 +141,7 @@ class TvShowDetailResponse extends Equatable {
       lastAirDate: this.lastAirDate,
       numberOfSeasons: this.numberOfSeasons,
       numberOfEpisodes: this.numberOfEpisodes,
-      genres: this.genres,
+      genres: this.genres.map((genre) => genre.toEntity()).toList(),
       backdropPath: this.backdropPath,
       adult: this.adult,
     );

@@ -9,7 +9,6 @@ class TvShowModel extends Equatable {
     required this.genreIds,
     required this.id,
     required this.name,
-    required this.originCountry,
     required this.originalLanguage,
     required this.originalName,
     required this.overview,
@@ -19,28 +18,25 @@ class TvShowModel extends Equatable {
     required this.voteCount,
   });
 
-  final String backdropPath;
-  final DateTime firstAirDate;
+  final String? backdropPath;
+  final String? firstAirDate;
   final List<int> genreIds;
   final int id;
-  final String name;
-  final List<String> originCountry;
+  final String? name;
   final String originalLanguage;
-  final String originalName;
+  final String? originalName;
   final String overview;
   final double popularity;
-  final String posterPath;
+  final String? posterPath;
   final double voteAverage;
   final int voteCount;
 
   factory TvShowModel.fromJson(Map<String, dynamic> json) => TvShowModel(
-        backdropPath:
-            json["backdrop_path"] == null ? null : json["backdrop_path"],
-        firstAirDate: DateTime.parse(json["first_air_date"]),
+        backdropPath: json["backdrop_path"],
+        firstAirDate: json["first_air_date"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
         name: json["name"],
-        originCountry: List<String>.from(json["origin_country"].map((x) => x)),
         originalLanguage: json["original_language"],
         originalName: json["original_name"],
         overview: json["overview"],
@@ -52,12 +48,10 @@ class TvShowModel extends Equatable {
 
   Map<String, dynamic> toJson() => {
         "backdrop_path": backdropPath,
-        "first_air_date":
-            "${firstAirDate.year.toString().padLeft(4, '0')}-${firstAirDate.month.toString().padLeft(2, '0')}-${firstAirDate.day.toString().padLeft(2, '0')}",
+        "first_air_date": firstAirDate,
         "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
         "id": id,
         "name": name,
-        "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
         "original_language": originalLanguage,
         "original_name": originalName,
         "overview": overview,
@@ -74,7 +68,6 @@ class TvShowModel extends Equatable {
       genreIds: this.genreIds,
       id: this.id,
       name: this.name,
-      originCountry: this.originCountry,
       originalLanguage: this.originalLanguage,
       originalName: this.originalName,
       overview: this.overview,
@@ -92,7 +85,6 @@ class TvShowModel extends Equatable {
         genreIds,
         id,
         name,
-        originCountry,
         originalLanguage,
         originalName,
         overview,

@@ -1,11 +1,17 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:ditonton/common/exception.dart';
+import 'package:ditonton/data/models/tv_show_detail_model.dart';
 import 'package:ditonton/data/models/tv_show_model.dart';
+import 'package:ditonton/data/models/tv_show_response.dart';
 import 'package:http/http.dart' as http;
 
 abstract class TvShowRemoteDataSource {
   Future<List<TvShowModel>> getNowAiringTvShows();
   Future<List<TvShowModel>> getPopularTvShows();
   Future<List<TvShowModel>> getTopRatedTvShows();
-  Future<TvShowModel> getTvShowDetail(int id);
+  Future<TvShowDetailResponse> getTvShowDetail(int id);
   Future<List<TvShowModel>> getTvShowRecommendations(int id);
   Future<List<TvShowModel>> searchTvShows(String query);
 }
@@ -19,38 +25,75 @@ class TvShowRemoteDataSourceImpl implements TvShowRemoteDataSource {
   TvShowRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<TvShowModel>> getNowAiringTvShows() {
-    // TODO: implement getNowAiringTvShows
-    throw UnimplementedError();
+  Future<List<TvShowModel>> getNowAiringTvShows() async {
+    final response =
+        await client.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY'));
+
+    if (response.statusCode == 200) {
+      return TvShowResponse.fromJson(json.decode(response.body)).tvShowList;
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<List<TvShowModel>> getPopularTvShows() {
-    // TODO: implement getPopularTvShows
-    throw UnimplementedError();
+  Future<List<TvShowModel>> getPopularTvShows() async {
+    final response =
+        await client.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY'));
+
+    if (response.statusCode == 200) {
+      return TvShowResponse.fromJson(json.decode(response.body)).tvShowList;
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<List<TvShowModel>> getTopRatedTvShows() {
-    // TODO: implement getTopRatedTvShows
-    throw UnimplementedError();
+  Future<List<TvShowModel>> getTopRatedTvShows() async {
+    final response = await client
+        .get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'), headers: {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+    });
+
+    if (response.statusCode == 200) {
+      return TvShowResponse.fromJson(json.decode(response.body)).tvShowList;
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<TvShowModel> getTvShowDetail(int id) {
-    // TODO: implement getTvShowDetail
-    throw UnimplementedError();
+  Future<TvShowDetailResponse> getTvShowDetail(int id) async {
+    final response = await client.get(Uri.parse('$BASE_URL/tv/$id?$API_KEY'));
+
+    if (response.statusCode == 200) {
+      return TvShowDetailResponse.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<List<TvShowModel>> getTvShowRecommendations(int id) {
-    // TODO: implement getTvShowRecommendations
-    throw UnimplementedError();
+  Future<List<TvShowModel>> getTvShowRecommendations(int id) async {
+    final response = await client
+        .get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY'));
+
+    if (response.statusCode == 200) {
+      return TvShowResponse.fromJson(json.decode(response.body)).tvShowList;
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<List<TvShowModel>> searchTvShows(String query) {
-    // TODO: implement searchTvShows
-    throw UnimplementedError();
+  Future<List<TvShowModel>> searchTvShows(String query) async {
+    final response = await client
+        .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query'));
+
+    if (response.statusCode == 200) {
+      return TvShowResponse.fromJson(json.decode(response.body)).tvShowList;
+    } else {
+      throw ServerException();
+    }
   }
 }
