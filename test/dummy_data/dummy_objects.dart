@@ -1,4 +1,5 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
@@ -69,6 +70,13 @@ final testWatchlistMovie = Movie.watchlist(
 );
 
 final testMovieTable = MovieTable(
+  id: 1,
+  title: 'title',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testTvShowTable = TvShowTable(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',

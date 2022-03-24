@@ -3,6 +3,7 @@ import 'package:ditonton/common/network_info.dart';
 import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/datasources/movie_local_data_source.dart';
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart';
+import 'package:ditonton/data/datasources/tv_show_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_show_remote_data_source.dart';
 import 'package:ditonton/data/repositories/movie_repository_impl.dart';
 import 'package:ditonton/domain/repositories/movie_repository.dart';
@@ -94,6 +95,8 @@ void init() {
       () => MovieLocalDataSourceImpl(databaseHelper: locator()));
   locator.registerLazySingleton<TvShowRemoteDataSource>(
       () => TvShowRemoteDataSourceImpl(client: locator()));
+  locator.registerLazySingleton<TvShowLocalDataSource>(
+      () => TvShowLocalDataSourceImpl(databaseHelper: locator()));
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
