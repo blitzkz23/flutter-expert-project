@@ -23,7 +23,7 @@ void main() {
     dataSource = TvShowRemoteDataSourceImpl(client: mockHttpClient);
   });
 
-  group('get Now Airing Tv Shows', () {
+  group('Get Now Airing Tv Shows', () {
     final tTvShowList = TvShowResponse.fromJson(
             json.decode(readJson('dummy_data/tv_now_airing.json')))
         .tvShowList;
@@ -57,7 +57,7 @@ void main() {
     });
   });
 
-  group('get Popular Tv Shows', () {
+  group('Get Popular Tv Shows', () {
     final tTvShowList = TvShowResponse.fromJson(
             json.decode(readJson('dummy_data/tv_popular.json')))
         .tvShowList;
@@ -91,7 +91,7 @@ void main() {
     });
   });
 
-  group('get Top Rated Tv Shows', () {
+  group('Get Top Rated Tv Shows', () {
     final tTvShowList = TvShowResponse.fromJson(
             json.decode(readJson('dummy_data/tv_top_rated.json')))
         .tvShowList;
@@ -128,7 +128,7 @@ void main() {
     });
   });
 
-  group('get tv show detail', () {
+  group('Get Tv Show Detail', () {
     final tId = 1;
     final tTvShowDetail = TvShowDetailResponse.fromJson(json.decode(
       readJson('dummy_data/tv_detail.json'),
@@ -162,7 +162,7 @@ void main() {
     });
   });
 
-  group('get tv show recommendations', () {
+  group('Get Tv Show Recommendations', () {
     final tId = 2;
     final tTvShowList = TvShowResponse.fromJson(
             json.decode(readJson('dummy_data/tv_recommendations.json')))
@@ -198,7 +198,7 @@ void main() {
     });
   });
 
-  group('search tv shows', () {
+  group('Search Tv Shows', () {
     final tSearchResult = TvShowResponse.fromJson(
             json.decode(readJson('dummy_data/search_spiderman_tv.json')))
         .tvShowList;

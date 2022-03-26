@@ -8,18 +8,19 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late TvShowLocalDataSourceImpl dataSource;
-  late MockDatabaseHelper mockDatabaseHelper;
+  late MockTvDatabaseHelper mockTvDatabaseHelper;
 
   setUp(() {
-    mockDatabaseHelper = MockDatabaseHelper();
-    dataSource = TvShowLocalDataSourceImpl(databaseHelper: mockDatabaseHelper);
+    mockTvDatabaseHelper = MockTvDatabaseHelper();
+    dataSource =
+        TvShowLocalDataSourceImpl(databaseHelper: mockTvDatabaseHelper);
   });
 
   group('save tv watchlist', () {
     test('should return success message when insert to database is success',
         () async {
       // arrange
-      when(mockDatabaseHelper.insertWatchlistTv(testTvShowTable))
+      when(mockTvDatabaseHelper.insertWatchlistTv(testTvShowTable))
           .thenAnswer((_) async => 1);
 
       // act
@@ -32,7 +33,7 @@ void main() {
     test('should throw DatabaseException when insert to database is failed',
         () async {
       // arrange
-      when(mockDatabaseHelper.insertWatchlistTv(testTvShowTable))
+      when(mockTvDatabaseHelper.insertWatchlistTv(testTvShowTable))
           .thenThrow(Exception());
 
       // act
@@ -46,7 +47,7 @@ void main() {
       test('should return success message when remove from database is success',
           () async {
         // arrange
-        when(mockDatabaseHelper.removeWatchlistTv(testTvShowTable))
+        when(mockTvDatabaseHelper.removeWatchlistTv(testTvShowTable))
             .thenAnswer((_) async => 1);
 
         // act
@@ -60,7 +61,7 @@ void main() {
     test('should throw DatabaseException when remove from database is failed',
         () async {
       // arrange
-      when(mockDatabaseHelper.removeWatchlistTv(testTvShowTable))
+      when(mockTvDatabaseHelper.removeWatchlistTv(testTvShowTable))
           .thenThrow(Exception());
 
       // act

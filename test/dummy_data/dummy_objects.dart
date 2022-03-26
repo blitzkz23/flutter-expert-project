@@ -1,8 +1,11 @@
+import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/domain/entities/tv_show_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -89,3 +92,29 @@ final testMovieMap = {
   'posterPath': 'posterPath',
   'title': 'title',
 };
+
+final testTvShowDetail = TvShowDetail(
+  adult: false,
+  backdropPath: 'backdropPath',
+  firstAirDate: 'firstAirDate',
+  genres: [Genre(id: 1, name: 'name')],
+  id: 1,
+  lastAirDate: 'lastAirDate',
+  name: 'name',
+  numberOfEpisodes: 1,
+  numberOfSeasons: 1,
+  originalLanguage: 'originalLanguage',
+  originalName: 'originalName',
+  overview: 'overview',
+  popularity: 1,
+  posterPath: 'posterPath',
+  voteAverage: 1,
+  voteCount: 1,
+);
+
+final testWatchlistTvShow = TvShow.watchlist(
+  id: 1,
+  name: 'title',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);

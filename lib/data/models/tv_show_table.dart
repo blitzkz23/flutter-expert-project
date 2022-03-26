@@ -1,6 +1,8 @@
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../domain/entities/tv_show.dart';
+
 class TvShowTable extends Equatable {
   final int id;
   final String? title;
@@ -20,12 +22,25 @@ class TvShowTable extends Equatable {
         overview: tvShow.overview,
       );
 
+  factory TvShowTable.fromMap(Map<String, dynamic> map) => TvShowTable(
+      id: map['id'],
+      title: map['title'],
+      posterPath: map['posterPath'],
+      overview: map['overview']);
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
         'posterPath': posterPath,
         'overview': overview,
       };
+
+  TvShow toEntity() => TvShow.watchlist(
+        id: id,
+        overview: overview,
+        posterPath: posterPath,
+        name: title,
+      );
 
   @override
   // TODO: implement props
