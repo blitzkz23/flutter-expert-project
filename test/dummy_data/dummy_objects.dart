@@ -79,6 +79,22 @@ final testMovieTable = MovieTable(
   overview: 'overview',
 );
 
+final testTvShow = TvShow(
+    id: 1,
+    name: 'name',
+    posterPath: 'posterPath',
+    overview: 'overview',
+    originalLanguage: 'originalLanguage',
+    popularity: 1,
+    originalName: 'originalName',
+    voteAverage: 1,
+    firstAirDate: 'firstAirDate',
+    backdropPath: 'backdropPath',
+    genreIds: [1, 2, 3],
+    voteCount: 1);
+
+final testTvShowList = [testTvShow];
+
 final testTvShowTable = TvShowTable(
   id: 1,
   title: 'title',

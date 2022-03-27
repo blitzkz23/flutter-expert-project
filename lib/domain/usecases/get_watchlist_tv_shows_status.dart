@@ -4,4 +4,8 @@ class GetWatchlistTvShowsStatus {
   final TvShowRepository repository;
 
   GetWatchlistTvShowsStatus(this.repository);
+
+  Future<bool> execute(int id) async {
+    return repository.isAddedToWatchlist(id);
+  }
 }
