@@ -1,5 +1,6 @@
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
+import 'package:ditonton/presentation/pages/tv_show_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +49,9 @@ class _CustomDrawerState extends State<CustomDrawer>
           ListTile(
             leading: Icon(Icons.tv),
             title: Text('TV Shows'),
+            onTap: () {
+              Navigator.pushNamed(context, TvShowPage.ROUTE_NAME);
+            },
           ),
           ListTile(
             leading: Icon(Icons.save_alt),
