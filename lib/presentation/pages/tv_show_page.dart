@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/presentation/pages/popular_tv_shows_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/custom_drawer.dart';
@@ -66,7 +67,8 @@ class _TvShowPageState extends State<TvShowPage> {
                   }),
                   _buildSubHeading(
                     title: 'Popular',
-                    onTap: () {},
+                    onTap: () => Navigator.pushNamed(
+                        context, PopularTvShowsPage.ROUTE_NAME),
                   ),
                   Consumer<TvShowListNotifier>(builder: (context, data, child) {
                     final state = data.popularState;
