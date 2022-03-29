@@ -4,6 +4,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/presentation/pages/popular_tv_shows_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +85,8 @@ class _TvShowPageState extends State<TvShowPage> {
                   }),
                   _buildSubHeading(
                     title: 'Top Rated',
-                    onTap: () {},
+                    onTap: () => Navigator.pushNamed(
+                        context, TopRatedTvShowsPage.ROUTE_NAME),
                   ),
                   Consumer<TvShowListNotifier>(builder: (context, data, child) {
                     final state = data.topRatedState;
