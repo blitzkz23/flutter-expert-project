@@ -35,7 +35,7 @@ class TvShowDetailResponse extends Equatable {
   });
 
   final bool adult;
-  final String backdropPath;
+  final String? backdropPath;
   final List<dynamic> createdBy;
   final List<int> episodeRunTime;
   final String firstAirDate;

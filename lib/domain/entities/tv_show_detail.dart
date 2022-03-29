@@ -22,7 +22,7 @@ class TvShowDetail extends Equatable {
   });
 
   final bool adult;
-  final String backdropPath;
+  final String? backdropPath;
   final String firstAirDate;
   final List<Genre> genres;
   final int id;

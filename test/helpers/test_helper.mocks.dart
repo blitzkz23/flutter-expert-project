@@ -427,7 +427,7 @@ class MockTvDatabaseHelper extends _i1.Mock implements _i24.TvDatabaseHelper {
   }
 
   @override
-  _i7.Future<_i23.Database?> get database =>
+  _i7.Future<_i23.Database?> get database2 =>
       (super.noSuchMethod(Invocation.getter(#database),
               returnValue: Future<_i23.Database?>.value())
           as _i7.Future<_i23.Database?>);
