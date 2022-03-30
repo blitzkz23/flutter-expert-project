@@ -110,6 +110,42 @@ class TvDetailContent extends StatelessWidget {
                               tvShow.name,
                               style: kHeading5,
                             ),
+                            Row(
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              '${tvShow.numberOfEpisodes.toString()}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      TextSpan(
+                                        text: ' Episodes',
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              '${tvShow.numberOfSeasons.toString()}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      TextSpan(
+                                        text: ' Seasons',
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 8.0,
+                            ),
                             ElevatedButton(
                               onPressed: () async {
                                 if (!isAddedWatchList) {
