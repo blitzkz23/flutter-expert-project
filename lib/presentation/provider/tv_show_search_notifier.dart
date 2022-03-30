@@ -1,7 +1,6 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/usecases/search_tv_shows.dart';
-import 'package:ditonton/domain/usecases/search_tv_shows.dart';
 import 'package:flutter/cupertino.dart';
 
 class TvShowSearchNotifier extends ChangeNotifier {
