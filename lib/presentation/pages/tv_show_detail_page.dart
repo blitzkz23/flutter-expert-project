@@ -265,6 +265,19 @@ class TvDetailContent extends StatelessWidget {
             },
             minChildSize: 0.25,
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            backgroundColor: kRichBlack,
+            foregroundColor: Colors.white,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
         )
       ],
     );

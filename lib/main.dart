@@ -31,6 +31,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
+import 'presentation/pages/watchlish_main_page.dart';
+
 void main() {
   di.init();
   runApp(MyApp());
@@ -118,10 +120,12 @@ class MyApp extends StatelessWidget {
               return CupertinoPageRoute(builder: (_) => TopRatedTvShowsPage());
             case SearchTvShowPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchTvShowPage());
-            case WatchlistMoviesPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
-            case WatchlistTvShowsPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => WatchlistTvShowsPage());
+            case WatchlistMainPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => WatchlistMainPage());
+            // case WatchlistMoviesPage.ROUTE_NAME:
+            //   return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
+            // case WatchlistTvShowsPage.ROUTE_NAME:
+            //   return MaterialPageRoute(builder: (_) => WatchlistTvShowsPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
             default:
